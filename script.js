@@ -29,6 +29,12 @@ let scoreCard = {
     chance: 0,
     bottomScoreTotal: 0,
     totalScore: 0,
+    sumDice: function (choice) {
+        for (let i = 0; i < 5; i++) {
+            this[choice] += diceRoll.dice[i];
+            this.bottomScoreTotal += diceRoll.dice[i];
+        }
+    },
     addTopScore: function (selection, value) {
         for (let i = 0; i < 5; i++) {
             if (diceRoll.dice[i] === value) {
@@ -36,36 +42,28 @@ let scoreCard = {
                 this.topScoreTotal += value;
             }
         }
-        this.totalScore+=this.topScoreTotal;
+        this.totalScore = this.topScoreTotal + this.bottomScoreTotal;
     },
     addBottomScore: function (selection) {
         const diceToString = diceRoll.sortedDice().join('');
-        console.log(diceToString);
         let testCondition = "";
         switch (selection) {
             case "threeKind":
                 testCondition = /111|222|333|444|555|666/;
                 if(testCondition.test(diceToString)) {
-                    for (let i = 0; i < 5; i++) {
-                        this[selection] += diceRoll.dice[i];
-                        this.bottomScoreTotal += diceRoll.dice[i];
-                    }
+                    this.sumDice(selection);
                 }
                 break;
             case "fourKind":
                 testCondition = /1111|2222|3333|4444|5555|6666/;
                 if(testCondition.test(diceToString)) {
-                    console.log("THAT IS A FOUR OF A KIND");
-                    for (let i = 0; i < 5; i++) {
-                        this[selection] += diceRoll.dice[i];
-                        this.bottomScoreTotal += diceRoll.dice[i];
-                    }
+                    this.sumDice(selection);
                 }
                 break;  
             case "small":
+                const uniqueDice = _.uniq(diceToString, true).join('');;
                 testCondition = /1234|2345|3456/;
-                if(testCondition.test(diceToString)) {
-                    console.log("THAT IS ONE SMALL STRAIGHT");
+                if(testCondition.test(uniqueDice)) {
                     this[selection] += 30;
                     this.bottomScoreTotal += 30;
                 }
@@ -86,13 +84,10 @@ let scoreCard = {
                 }
                 break;
             case "chance":
-                for (let i = 0; i < 5; i++) {
-                        this[selection] += diceRoll.dice[i];
-                        this.bottomScoreTotal += diceRoll.dice[i];
-                }
+                this.sumDice(selection);
                 break;
         }
-        this.totalScore+=this.bottomScoreTotal;
+        this.totalScore = this.topScoreTotal + this.bottomScoreTotal;
     }
 }
 

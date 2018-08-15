@@ -37,6 +37,14 @@ $(document).ready(function() {
                 this.bottomScoreTotal += diceRoll.dice[i];
             }
         },
+        writeValues: function (section, selection) {
+            const scoreTotal = `${section}ScoreTotal`;
+            $(`#${section}-total-score`).empty();
+            $(`#${section}-total-score`).append(`<h3>${this[scoreTotal]}</h3>`);
+            $(`#total-score-score`).empty();
+            $(`#total-score-score`).append(`<h3>${this.totalScore}</h3>`);
+            $(`#${selection}`).append(`<h3>${this[selection]}</h3>`);
+        },
         addTopScore: function (selection) {
             let value = 0;
             switch(selection) {
@@ -66,11 +74,7 @@ $(document).ready(function() {
                 }
             }
             this.totalScore = this.topScoreTotal + this.bottomScoreTotal;
-            $(`#top-total-score`).empty();
-            $(`#top-total-score`).append(`<h3>${this.topScoreTotal}</h3>`);
-            $(`#total-score-score`).empty();
-            $(`#total-score-score`).append(`<h3>${this.totalScore}</h3>`);
-            $(`#${selection}`).append(`<h3>${this[selection]}</h3>`);
+            this.writeValues("top", selection)
         },
         addBottomScore: function (selection) {
             const diceToString = diceRoll.sortedDice().join('');
@@ -116,11 +120,7 @@ $(document).ready(function() {
                     break;
             }
             this.totalScore = this.topScoreTotal + this.bottomScoreTotal;
-            $(`#bottom-total-score`).empty();
-            $(`#bottom-total-score`).append(`<h3>${this.bottomScoreTotal}</h3>`);
-            $(`#total-score-score`).empty();
-            $(`#total-score-score`).append(`<h3>${this.totalScore}</h3>`);
-            $(`#${selection}`).append(`<h3>${this[selection]}</h3>`);
+            this.writeValues("bottom", selection);
         }
     }
 
@@ -130,8 +130,7 @@ $(document).ready(function() {
         const sortedRoll = diceRoll.sortedDice();
         for(let i=0; i < 5; i++) {
             $(`.dice-${i}`).append(`<h3>${sortedRoll[i]}</h3>`);
-        }
-        
+        }      
     });
 
     $('.top-score').on('click', function(event) {
@@ -149,3 +148,10 @@ $(document).ready(function() {
     });
 
 });
+
+//  THINGS TO STILL IMPLEMENT
+//  full house regex check
+//  3 rolls max per turn
+//  marking scores already done to not be changed
+//  bonus top score
+//  marking dice to not be re-rolled

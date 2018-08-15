@@ -140,6 +140,18 @@ div.top-space {
     grid-column: 2 / -3;
 }
 
+div.reset {
+    grid-row: 8;
+    grid-column: -3 / -1;
+    text-align: center;
+    background-color: tomato;
+    color: white;
+    padding: 0;
+    &-hidden {
+        display: none;
+    }
+}
+
 .score-label {
     font-weight: 600;
 }

@@ -57,17 +57,18 @@ yahtzeeApp.scoreCard = {
         scored: false
     },
     bottomScoreTotal: 0,
-    totalScore: 0
+    totalScore: 0,
+    gameRound: 1,
 }
 
 // INITIAL DICE ROLL FUNCTION TO ROLL THE DICE
 yahtzeeApp.diceRoll = {
     rolled: false,
     dice: [],
+    rollChance: 0,
     rollDice: function (numToRoll) {
         for (let i = 0; i < numToRoll; i++) {
             this.dice[i] = Math.floor(Math.random() * 6) + 1;
-            console.log(`Dice ${i}: ${this.dice[i]}`);
         }
     },
     sortedDice: function () {
@@ -178,7 +179,7 @@ yahtzeeApp.addBottomScore = function (selection) {
             case "yahtzee":
                 testCondition = /11111|22222|33333|44444|55555|66666/;
                 if(testCondition.test(diceToString)) {
-                    console.log("HOLY CRAP, YOU GOT A YAHTZEE!!!!!!");
+                    alert("HOLY CRAP, YOU GOT A YAHTZEE!!!!!!");
                     yahtzeeApp.scoreCard[selection].value += 50;
                     yahtzeeApp.scoreCard.bottomScoreTotal += 50;
                 }
@@ -196,72 +197,82 @@ yahtzeeApp.addBottomScore = function (selection) {
 yahtzeeApp.clickRoll = function() {
     $('.roll').on('click', function(e) {
         yahtzeeApp.diceRoll.rolled = true;
-        $('.dice').empty();
-        yahtzeeApp.diceRoll.rollDice(5);
-        const sortedRoll = yahtzeeApp.diceRoll.sortedDice();
-        for(let i=0; i < 5; i++) {
-            $(`.dice-${i}`).append(`<h3>${sortedRoll[i]}</h3>`);
-        }      
+        if(yahtzeeApp.diceRoll.rollChance < 3) {
+            $('.dice').empty();
+            yahtzeeApp.diceRoll.rollDice(5);
+            const sortedRoll = yahtzeeApp.diceRoll.sortedDice();
+            for(let i=0; i < 5; i++) {
+                $(`.dice-${i}`).append(`<h3>${sortedRoll[i]}</h3>`);
+            }
+            yahtzeeApp.diceRoll.rollChance++;      
+        } else {
+            alert("You must pick a score to set");
+        }
     });
+}
+
+//  CHECK IF THE SCORE BOX HAS ALREADY BEEN MARKED IN AND IF NOT, FILL IN THE SCORE
+yahtzeeApp.clickScoreBox = function (scoreSection, scoreType) {
+    if(!yahtzeeApp.diceRoll.rolled) {
+        alert("Please roll your dice first!!!");
+    } else {
+        if (yahtzeeApp.scoreCard[scoreType].scored === false) {
+            yahtzeeApp[scoreSection](scoreType);
+            $(this).addClass('marked');
+            $('.dice').empty();
+            yahtzeeApp.diceRoll.rolled = false;
+            yahtzeeApp.diceRoll.rollChance = 0;
+            yahtzeeApp.scoreCard.gameRound++;
+            if(yahtzeeApp.scoreCard.gameRound > 13) {
+                alert("GAME OVER!!! PLEASE RESTART!!!!");
+                $('.reset').removeClass('reset-hidden');
+
+            }
+        } else {
+            alert(`You have already scored your ${scoreType.toUpperCase()}. Please pick something else.`);
+        }
+    }
 }
 
 //  EVENT LISTENER FOR A CLICK ONTO ANY OF THE TOP SCORE BOXES TO CALCULATE THE SCORE
 yahtzeeApp.clickTopScore = function () {
     $('.top-score').on('click', function(event) {
-        if(!yahtzeeApp.diceRoll.rolled) {
-            alert("Please roll your dice first!!!");
-        } else {
-            const scoreType = $(this).attr('id');
-            if (yahtzeeApp.scoreCard[scoreType].scored === false) {
-                console.log(`You clicked the ${scoreType} button`);
-                yahtzeeApp.addTopScore(scoreType);
-                console.log(yahtzeeApp.scoreCard);
-                $(this).addClass('marked');
-                $('.dice').empty();
-                yahtzeeApp.diceRoll.rolled = false;
-            } else {
-                alert(`You have already scored your ${scoreType.toUpperCase()}. Please pick something else.`);
-            }
-        }
+        const scoreType = $(this).attr('id');
+        yahtzeeApp.clickScoreBox("addTopScore", scoreType);
     });
 }
 
 //  EVENT LISTENER FOR A CLICK ONTO ANY OF THE BOTTOM SCORE BOXES TO CALCULATE THE SCORE
 yahtzeeApp.clickBottomScore = function () {
     $('.bottom-score').on('click', function(event) {
-        if(!yahtzeeApp.diceRoll.rolled) {
-            alert("Please roll your dice first!!!");
-        } else {
-            const scoreType = $(this).attr('id');
-            if (yahtzeeApp.scoreCard[scoreType].scored === false) {
-                console.log(`You clicked the ${scoreType} button`);
-                yahtzeeApp.addBottomScore(scoreType);
-                console.log(yahtzeeApp.scoreCard);
-                $(this).addClass('marked');
-                $('.dice').empty();
-                yahtzeeApp.diceRoll.rolled = false;
-            } else {
-                alert(`You have already scored your ${scoreType.toUpperCase()}. Please pick something else.`);
-            }
-        }
+        const scoreType = $(this).attr('id');
+        yahtzeeApp.clickScoreBox("addBottomScore", scoreType);
+    });
+}
+
+yahtzeeApp.reset = function () {
+    $('.reset').on('click', function(event) {
+        document.location = "";
     });
 }
 
 yahtzeeApp.init = function () {
-    yahtzeeApp.clickRoll();
-    yahtzeeApp.clickTopScore();
-    yahtzeeApp.clickBottomScore();
+        yahtzeeApp.clickRoll();
+        yahtzeeApp.clickTopScore();
+        yahtzeeApp.clickBottomScore();
+        yahtzeeApp.reset();
 }
 
 $(document).ready(function() {
-    yahtzeeApp.init();
+        yahtzeeApp.init();
 });
+
 //  THINGS TO STILL IMPLEMENT
-//  3 rolls max per turn
-//  13 turns total
 //  marking dice to not be re-rolled
 //  make a separate re roll function 
 //  dice images for dice roll
+//  13 turns total -- DONE
+//  3 rolls max per turn -- DONE
 //  full house regex check -- DONE
 //  marking scores already done to not be changed -- DONE
 //  bonus top score -- DONE

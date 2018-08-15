@@ -47,8 +47,21 @@ a {
 }
 
 body {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     background-color: teal;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+    margin: 25px 0;
+    text-align: center;
+    color: palegoldenrod;
+}
+
+h2, h3 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .wrapper {
@@ -62,14 +75,23 @@ body {
     padding: 50px;
     background-color: palegoldenrod;
     display: grid;
-    grid-template-columns: repeat(6, 60px);
-    grid-template-rows: repeat(10, 60px);
+    grid-template-columns: repeat(6, 70px);
+    grid-template-rows: repeat(8, 70px);
     grid-gap: 20px;
+    border-radius: 20px;
+    & div {
+        padding: 3px 0 0 3px;
+        border: 2px solid black;
+        border-radius: 7px;
+        box-shadow: 3px 3px 3px #000000;
+    }
 }
 
-.top-space {
+div.top-space {
     grid-column: 3 / span 2;
     grid-row: 3;
+    border: none;
+    box-shadow: none;
 }
 
 .top-total-label {
@@ -80,15 +102,6 @@ body {
     grid-area: 3 / 6;
 }
 
-.total-score-label {
-    grid-area: 8 / 1;
-}
-
-.total-score-score {
-    grid-row: 8;
-    grid-column: 2 / -1;
-}
-
 .bottom-total-label {
     grid-area: 6 / 5;
 }
@@ -97,26 +110,61 @@ body {
     grid-area: 6 / 6;
 }
 
-.dice-zero {
+.dice-0 {
     grid-area: 7 / 1;
 }
 
-.dice-one {
+.dice-1 {
     grid-area: 7 / 2;
 }
 
-.dice-two {
+.dice-2 {
     grid-area: 7 / 3;
 }
 
-.dice-three {
+.dice-3 {
     grid-area: 7 / 4;
 }
 
-.dice-four {
+.dice-4 {
     grid-area: 7 / 5;
 }
 
-.roll-play {
-    grid-area: 7 / 6; 
+.total-score-label {
+    grid-area: 8 / 1;
+}
+
+.total-score-score {
+    grid-row: 8;
+    grid-column: 2 / -3;
+}
+
+.score-label {
+    font-weight: 600;
+}
+
+div.roll {
+    grid-area: 7 / 6;
+    text-align: center;
+    position: relative;
+    padding: 0;
+    box-shadow: 3px 3px 3px #000000;
+    &:hover {
+        background-color: tomato;
+        color: white;
+    }
+}
+
+.dice {
+    text-align: center;
+    font-size: 2.2rem;
+    background-color: #FFFFFF;
+}
+
+div.score-box {
+    background-color: teal;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 2.2rem;
+    padding: 0;
 }

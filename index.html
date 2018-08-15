@@ -4,61 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <link rel="stylesheet" href="styles/style.css">
     <title>Project 3 Testing</title>
 </head>
 <body>
 
     <div class="wrapper">
+        <h1>Yahtzee</h1>
 
         <div class="score-sheet">
 
-            <div>Ones</div>
-            <div>One Score</div>
-            <div>Twos</div>
-            <div>Two Score</div>
-            <div>Threes</div>
-            <div>Three Score</div>
-            <div>Fours</div>
-            <div>Four Score</div>
-            <div>Fives</div>
-            <div>Five Score</div>
-            <div>Sixes</div>
-            <div>Six Score</div>
-            <div>Bonus</div>
-            <div>Bonus Score</div>
-            <div class="top-space">Spacer</div>
-            <div class="top-total top-total-label">Top</div>
-            <div class="top-total top-total-score">Top Score</div>
-            <div>Three of a Kind</div>
-            <div>Three of a Kind Score</div>
-            <div>Four of a Kind</div>
-            <div>Four of a Kind Score</div>
-            <div>Full House</div>
-            <div>Full House Score</div>
-            <div>Small Straight</div>
-            <div>Small Straight Score</div>
-            <div>Large Straight</div>
-            <div>Large Straight Score</div>
-            <div>Yahtzee</div>
-            <div>Yahtzee Score</div>
-            <div>Chance</div>
-            <div>Chance Score</div>
-            <div class="bottom-total bottom-total-label">Bottom</div>
-            <div class="bottom-total bottom-total-score">Bottom Score</div>
-            <div class="total-score-label">Total</div>
-            <div class="total-score-score">Total Score</div>
-            <div class="dice-zero">Dice 0</div>
-            <div class="dice-one">Dice 1</div>
-            <div class="dice-two">Dice 2</div>
-            <div class="dice-three">Dice 3</div>
-            <div class="dice-four">Dice 4</div>
-            <div class="roll-play">Roll / Play</div>
+            <div class="score-label">Ones</div>
+            <div class="top-score score-box" id="one"></div>
+            <div class="score-label">Twos</div>
+            <div class="top-score score-box" id="two"></div>
+            <div class="score-label">Threes</div>
+            <div class="top-score score-box" id="three"></div>
+            <div class="score-label">Fours</div>
+            <div class="top-score score-box" id="four"></div>
+            <div class="score-label">Fives</div>
+            <div class="top-score score-box" id="five"></div>
+            <div class="score-label">Sixes</div>
+            <div class="top-score score-box" id="six"></div>
+            <div class="score-label">Bonus</div>
+            <div class="score-box"></div>
+            <div class="top-space"></div>
+            <div class=" score-label top-total top-total-label">Top</div>
+            <div class="score-box top-total top-total-score" id="top-total-score"></div>
+            <div class="score-label">Three of a Kind</div>
+            <div class="score-box bottom-score" id="threeKind"></div>
+            <div class="score-label">Four of a Kind</div>
+            <div class="score-box bottom-score" id="fourKind"></div>
+            <div class="score-label">Full House</div>
+            <div class="score-box bottom-score" id="fullHouse"></div>
+            <div class="score-label">Small Straight</div>
+            <div class="score-box bottom-score" id="small"></div>
+            <div class="score-label">Large Straight</div>
+            <div class="score-box bottom-score" id="large"></div>
+            <div class="score-label">Yahtzee</div>
+            <div class="score-box bottom-score" id="yahtzee"></div>
+            <div class="score-label">Chance</div>
+            <div class="score-box bottom-score" id="chance"></div>
+            <div class="score-label bottom-total bottom-total-label">Bottom</div>
+            <div class="score-box bottom-total bottom-total-score" id="bottom-total-score"><h3></h3></div>
+            <div class="score-label total-score-label">Total</div>
+            <div class="score-box total-score-score" id="total-score-score"><h3></h3></div>
+            <div class="score-label dice dice-0"></div>
+            <div class="score-label dice dice-1"></div>
+            <div class="score-label dice dice-2"></div>
+            <div class="score-label dice dice-3"></div>
+            <div class="score-label dice dice-4"></div>
+            <div class="roll"><h2>Roll</h2></div>
+            <!-- <div class="play"><h2>Play</h2></div> -->
 
         </div>
 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://fastcdn.org/Underscore.js/1.8.3/underscore-min.js"></script>
     <script src='script.js'></script>
 </body>

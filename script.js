@@ -1,7 +1,10 @@
 $(document).ready(function() {
     
+    // INITIAL DICE ROLL FUNCTION TO ROLL THE DICE
+
     let diceRoll = {
-        dice: [0, 0, 0, 0, 0],
+        rolled: false,
+        dice: [],
         rollDice: function (numToRoll) {
             for (let i = 0; i < numToRoll; i++) {
                 this.dice[i] = Math.floor(Math.random() * 6) + 1;
@@ -12,6 +15,8 @@ $(document).ready(function() {
             return this.dice.sort((a, b) => a-b);    
         }
     }
+
+    // SCORE CARD OBJECT TO KEEP TRACK OF ALL THE SCORES
 
     let scoreCard = {
         one: {
@@ -70,12 +75,16 @@ $(document).ready(function() {
         },
         bottomScoreTotal: 0,
         totalScore: 0,
+
+        //  SMALL METHOD TO TOTAL THE SUM OF THE DICE - USED FOR BOTTOM SCORES THREE OF A KIND, FOUR OF A KIND AND CHANCE
         sumDice: function (choice) {
             for (let i = 0; i < 5; i++) {
                 this[choice].value += diceRoll.dice[i];
                 this.bottomScoreTotal += diceRoll.dice[i];
             }
         },
+
+        //  METHOD TO WRITES THE SCORES TO THE SCORE CARD PAGE ITSELF
         writeValues: function (section, selection) {
             const scoreTotal = `${section}ScoreTotal`;
             $(`#${section}-total-score`).empty();
@@ -84,6 +93,8 @@ $(document).ready(function() {
             $(`#total-score-score`).append(`<h3>${this.totalScore}</h3>`);
             $(`#${selection}`).append(`<h3>${this[selection].value}</h3>`);
         },
+        
+        //  METHOD TO CALCULATE THE SCORE FOR THE TOP AREA. READS IN WHICH CATEGORY WAS CLICKED, ASSIGNS THE PROPER VALUE AND READS THROUGH THE DICES AND ADDS THEM UP APPROPRIATELY. THEN ADDS TO IT'S PROPER AREA, THE TOP SCORE AND THE TOTAL SCORE
         addTopScore: function (selection) {
             if (this[selection].scored === false) {
                 let value = 0;
@@ -127,6 +138,8 @@ $(document).ready(function() {
                 alert(`You have already scored your ${selection.toUpperCase()}. Please pick something else.`);
             }
         },
+
+        //  METHOD TO CALCULATE THE SCORE FOR THE BOTTOM AREA. READS IN WHICH CATEGORY WAS CLICKED, CHECKS IT AGAINST THE NECESSARY REGULAR EXPRESSION. THEN ADDS TO IT'S PROPER AREA, THE BOTTOM SCORE AND THE TOTAL SCORE
         addBottomScore: function (selection) {
             if (this[selection].scored === false) {
                 const diceToString = diceRoll.sortedDice().join('');
@@ -189,7 +202,9 @@ $(document).ready(function() {
         }
     }
 
+    //  LISTENING FOR A CLICK ONTO THE ROLL BUTTON
     $('.roll').on('click', function(e) {
+        diceRoll.rolled = true;
         $('.dice').empty();
         diceRoll.rollDice(5);
         const sortedRoll = diceRoll.sortedDice();
@@ -198,26 +213,44 @@ $(document).ready(function() {
         }      
     });
 
+    //  LISTENING FOR A CLICK ONTO ANY OF THE TOP SCORE BOXES TO CALCULATE THE SCORE
     $('.top-score').on('click', function(event) {
-        const scoreType = $(this).attr('id');
-        console.log(`You clicked the ${scoreType} button`);
-        scoreCard.addTopScore(scoreType);
-        console.log(scoreCard);
+        if(!diceRoll.rolled) {
+            alert("Please roll your dice first!!!");
+        } else {
+            const scoreType = $(this).attr('id');
+            console.log(`You clicked the ${scoreType} button`);
+            scoreCard.addTopScore(scoreType);
+            console.log(scoreCard);
+            $(this).addClass('marked');
+            $('.dice').empty();
+            diceRoll.rolled = false;
+        }
     });
 
+    //  LISTENING FOR A CLICK ONTO ANY OF THE BOTTOM SCORE BOXES TO CALCULATE THE SCORE
     $('.bottom-score').on('click', function(event) {
-        const scoreType = $(this).attr('id');
-        console.log(`You clicked the ${scoreType} button`);
-        scoreCard.addBottomScore(scoreType);
-        console.log(scoreCard);
+        if(!diceRoll.rolled) {
+            alert("Please roll your dice first!!!");
+        } else {
+            const scoreType = $(this).attr('id');
+            console.log(`You clicked the ${scoreType} button`);
+            scoreCard.addBottomScore(scoreType);
+            console.log(scoreCard);
+            $(this).addClass('marked');
+            $('.dice').empty();
+            diceRoll.rolled = false;
+        }
     });
 
 });
 
 //  THINGS TO STILL IMPLEMENT
-//  full house regex check -- DONE
 //  3 rolls max per turn
-//  marking scores already done to not be changed -- DONE
-//  bonus top score
 //  marking dice to not be re-rolled
 //  make a separate re roll function 
+//  dice images for dice roll
+//  full house regex check -- DONE
+//  marking scores already done to not be changed -- DONE
+//  bonus top score -- DONE
+//  after commiting score, clear the dice so we can't commit multiple times -- DONE

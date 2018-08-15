@@ -73,12 +73,13 @@ h2, h3 {
     justify-content: center;
     align-content: center;
     padding: 50px;
-    background-color: palegoldenrod;
+    background-color: #D3D3D3;
     display: grid;
     grid-template-columns: repeat(6, 70px);
     grid-template-rows: repeat(8, 70px);
     grid-gap: 20px;
     border-radius: 20px;
+    box-shadow: 5px 5px 5px #000000;
     & div {
         padding: 3px 0 0 3px;
         border: 2px solid black;
@@ -158,7 +159,7 @@ div.roll {
 .dice {
     text-align: center;
     font-size: 2.2rem;
-    background-color: #FFFFFF;
+    background-color: #DEDEDE;
 }
 
 div.score-box {
@@ -167,4 +168,9 @@ div.score-box {
     text-align: center;
     font-size: 2.2rem;
     padding: 0;
+}
+
+.score-box.marked {
+    background-color: #242424;
+    color: #FFFFFF;
 }

@@ -217,6 +217,16 @@ yahtzeeApp.checkEndGame = function () {
     }
 }
 
+yahtzeeApp.resetDiceImage = function(i) {
+    for(let i=0; i < 5; i++) {
+        $(`.dice-${i}`).removeClass (function (index, classes) {
+            const classesArray = classes.split(' ');
+            const removeClass = _.filter(classesArray, function(className){ return className.indexOf('die-') === 0; }).toString();
+            return removeClass;
+        });
+    }
+}
+
 //  EVENT LISTENER FOR A CLICK ONTO THE ROLL BUTTON
 yahtzeeApp.clickRoll = function() {
     $('.roll').on('click', function(e) {
@@ -225,10 +235,10 @@ yahtzeeApp.clickRoll = function() {
         } else {
             yahtzeeApp.diceRoll.rolled = true;
             if(yahtzeeApp.diceRoll.rollChance < 3) {
-                $('.dice').empty();
                 yahtzeeApp.diceRoll.rollDice();
+                yahtzeeApp.resetDiceImage();
                 for(let i=0; i < 5; i++) {
-                    $(`.dice-${i}`).append(`<h3>${yahtzeeApp.diceRoll.dice[i].value}</h3>`);
+                    $(`.dice-${i}`).addClass(`die-${yahtzeeApp.diceRoll.dice[i].value}`);
                 }
                 yahtzeeApp.diceRoll.rollChance++;      
             } else {
@@ -252,6 +262,7 @@ yahtzeeApp.clickScoreBox = function (scoreSection, scoreType) {
             yahtzeeApp.diceRoll.dice.forEach((die) => {
                 die.marked = false;
             });
+            yahtzeeApp.resetDiceImage();
             yahtzeeApp.scoreCard.gameRound++;
             yahtzeeApp.checkEndGame();
         } else {
@@ -278,13 +289,15 @@ yahtzeeApp.clickBottomScore = function () {
 
 yahtzeeApp.clickDice = function () {
     $('.dice').on('click', function(event) {
-        const diceNumber = $(this).attr('id').substring(4);
-        if(yahtzeeApp.diceRoll.dice[diceNumber].marked) {
-            yahtzeeApp.diceRoll.dice[diceNumber].marked = false;
-        } else {
-            yahtzeeApp.diceRoll.dice[diceNumber].marked = true;
+        if(yahtzeeApp.diceRoll.rolled) {
+            const diceNumber = $(this).attr('id').substring(4);
+            if(yahtzeeApp.diceRoll.dice[diceNumber].marked) {
+                yahtzeeApp.diceRoll.dice[diceNumber].marked = false;
+            } else {
+                yahtzeeApp.diceRoll.dice[diceNumber].marked = true;
+            }
+            $(this).toggleClass('saved');
         }
-        $(this).toggleClass('saved');
     })
 }
 
@@ -307,6 +320,7 @@ $(document).ready(function() {
 });
 
 //  THINGS TO STILL IMPLEMENT
+//  labels to keep track of current turn / current roll
 //  dice images for dice roll
 //  marking dice to not be re-rolled -- DONE
 //  make a separate re roll function -- DONE

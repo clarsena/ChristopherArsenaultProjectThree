@@ -1,3 +1,26 @@
+/*
+ * Dice.css v1.0
+ * Code - MIT License - https://github.com/diafygi/dice-css
+ * Images - Public Domain - https://openclipart.org/detail/105931/sixsided-dice-faces-lio-01
+ */
+.die-1 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' version='1.1' viewBox='0 0 76.5 76.5' height='21.6' width='21.6'%3E%3Cg transform='translate(113.25%2C-494.1)'%3E%3Cg transform='matrix(0.5%2C0%2C0%2C0.5%2C-406.5%2C374.7)'%3E%3Crect x='588' y='240.4' width='150' height='150' ry='50' rx='50' style='fill%3A%23fff%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3Ccircle transform='translate(337.5%2C87.5)' cx='325' cy='227.4' r='12.5' style='fill%3A%23000%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E "); }
+
+.die-2 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' version='1.1' viewBox='0 0 76.5 76.5' height='21.6' width='21.6'%3E%3Cstyle%3E.s0%7Bfill%3A%23000%3Bstroke-width%3A3%3Bstroke%3A%23000%3B%7D%3C%2Fstyle%3E%3Cg transform='translate(109.9%2C-505.1)'%3E%3Cg transform='matrix(0.5%2C0%2C0%2C0.5%2C-415.6%2C485.6)'%3E%3Crect x='613' y='40.4' width='150' height='150' ry='50' rx='50' style='fill%3A%23fff%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3Ccircle transform='translate(326.5%2C-148.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(398.5%2C-76.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E "); }
+
+.die-3 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' version='1.1' viewBox='0 0 76.5 76.5' height='21.6' width='21.6'%3E%3Cstyle%3E.s0%7Bfill%3A%23000%3Bstroke-width%3A3%3Bstroke%3A%23000%3B%7D%3C%2Fstyle%3E%3Cg transform='translate(84.9%2C-515.5)'%3E%3Cg transform='matrix(0.5%2C0%2C0%2C0.5%2C-290.6%2C514.9)'%3E%3Crect x='413' y='2.9' width='150' height='150' ry='50' rx='50' style='fill%3A%23fff%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3Ccircle transform='translate(126.5%2C-186)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(198.5%2C-114)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(162.5%2C-150)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E "); }
+
+.die-4 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' version='1.1' viewBox='0 0 76.5 76.5' height='21.6' width='21.6'%3E%3Cstyle%3E.s0%7Bfill%3A%23000%3Bstroke-width%3A3%3Bstroke%3A%23000%3B%7D%3C%2Fstyle%3E%3Cg transform='translate(90.7%2C-499.7)'%3E%3Cg transform='matrix(0.5%2C0%2C0%2C0.5%2C-302.7%2C367.8)'%3E%3Crect x='425.5' y='265.4' width='150' height='150' ry='50' rx='50' style='fill%3A%23fff%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3Ccircle transform='translate(139%2C76.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(139%2C148.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(211%2C76.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(211%2C148.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E "); }
+
+.die-5 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' version='1.1' viewBox='0 0 76.5 76.5' height='21.6' width='21.6'%3E%3Cstyle%3E.s0%7Bfill%3A%23000%3Bstroke-width%3A3%3Bstroke%3A%23000%3B%7D%3C%2Fstyle%3E%3Cg transform='translate(89.2%2C-510.5)'%3E%3Cg transform='matrix(0.5%2C0%2C0%2C0.5%2C-194.9%2C372.3)'%3E%3Crect x='213' y='277.9' width='150' height='150' ry='50' rx='50' style='fill%3A%23fff%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3Ccircle transform='translate(-73.5%2C89)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-73.5%2C161)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-1.5%2C89)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-1.5%2C161)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-37.5%2C125)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E "); }
+
+.die-6 {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' version='1.1' viewBox='0 0 76.5 76.5' height='21.6' width='21.6'%3E%3Cstyle%3E.s0%7Bfill%3A%23000%3Bstroke-width%3A3%3Bstroke%3A%23000%3B%7D%3C%2Fstyle%3E%3Cg transform='translate(86.2%2C-500.6)'%3E%3Cg transform='matrix(0.5%2C0%2C0%2C0.5%2C-98.2%2C356.2)'%3E%3Crect x='25.5' y='290.4' width='150' height='150' ry='50' rx='50' style='fill%3A%23fff%3Bstroke-width%3A3%3Bstroke%3A%23000'%2F%3E%3Ccircle transform='translate(-261%2C101.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-261%2C173.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-261%2C137.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-189%2C101.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-189%2C173.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3Ccircle transform='translate(-189%2C137.5)' cx='325' cy='227.4' r='12.5' class='s0'%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -242,101 +265,77 @@ h2, h3 {
   padding: 50px;
   background-color: #e2e2e2;
   display: grid;
-  grid-template-columns: repeat(6, 70px);
-  grid-template-rows: repeat(8, 70px);
-  grid-gap: 20px;
+  grid-template-columns: repeat(5, minmax(50px, 1fr));
+  grid-template-rows: repeat(22, 50px);
+  grid-gap: 5px;
   border-radius: 20px;
   -webkit-box-shadow: 5px 5px 5px #000000;
   box-shadow: 5px 5px 5px #000000; }
   .score-sheet div {
     padding: 3px 0 0 3px;
     border: 2px solid black;
-    border-radius: 7px;
     -webkit-box-shadow: 3px 3px 3px #000000;
     box-shadow: 3px 3px 3px #000000; }
 
-div.top-space {
-  grid-column: 3 / span 2;
-  grid-row: 3;
-  border: none;
-  -webkit-box-shadow: none;
-  box-shadow: none; }
+div.section-header {
+  grid-column: span 5;
+  font-size: 2.5rem;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding: 10px; }
 
-.top-total-label {
-  grid-area: 3 / 5; }
+.score-label {
+  grid-column: span 1;
+  font-weight: 600;
+  background-color: #fda988; }
 
-.top-total-score {
-  grid-area: 3 / 6; }
+.score-info {
+  grid-column: span 2; }
 
-.bottom-total-label {
-  grid-area: 6 / 5; }
+.score-box {
+  grid-column: span 2;
+  background-color: #8dc4f7;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 2.2rem;
+  padding: 0; }
+  .score-box.marked {
+    background-color: #242424;
+    color: #FFFFFF; }
 
-.bottom-total-score {
-  grid-area: 6 / 6; }
-
-.dice-0 {
-  grid-area: 7 / 1; }
-
-.dice-1 {
-  grid-area: 7 / 2; }
-
-.dice-2 {
-  grid-area: 7 / 3; }
-
-.dice-3 {
-  grid-area: 7 / 4; }
-
-.dice-4 {
-  grid-area: 7 / 5; }
-
-.total-score-label {
-  grid-area: 8 / 1; }
-
-.total-score-score {
-  grid-row: 8;
-  grid-column: 2 / -3; }
-
-div.reset {
-  grid-row: 8;
-  grid-column: -3 / -1;
+.reset {
+  grid-area: -2 / -2;
   text-align: center;
   background-color: tomato;
   color: white;
   padding: 0; }
-  div.reset-hidden {
+  .reset-hidden {
     display: none; }
 
-.score-label {
-  font-weight: 600;
-  background-color: #fda988; }
-
-div.roll {
-  grid-area: 7 / 6;
+.roll {
   text-align: center;
   position: relative;
   padding: 0;
   -webkit-box-shadow: 3px 3px 3px #000000;
   box-shadow: 3px 3px 3px #000000;
   background-color: #fda988; }
-  div.roll:hover {
+  .roll:hover {
     background-color: tomato;
     color: white; }
 
-.dice {
+div.dice {
+  grid-row: span 2;
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   text-align: center;
   font-size: 2.2rem;
-  background-color: #DEDEDE; }
+  background-color: #e2e2e2;
+  display: inline-block;
+  min-height: 1em;
+  background-size: 3em;
+  background-repeat: no-repeat;
+  background-position: center; }
 
-div.score-box {
-  background-color: #8dc4f7;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 2.2rem;
-  padding: 0; }
-
-.score-box.marked {
-  background-color: #242424;
-  color: #FFFFFF; }
-
-.saved {
-  background-color: goldenrod; }
+div.saved {
+  background-color: #fda988; }

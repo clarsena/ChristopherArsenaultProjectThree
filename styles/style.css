@@ -257,6 +257,7 @@ h2, h3 {
   display: block; }
 
 .score-sheet {
+  width: 100%;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -324,6 +325,7 @@ div.section-header {
     color: white; }
 
 div.dice {
+  grid-column: span 1;
   grid-row: span 2;
   border: none;
   -webkit-box-shadow: none;
@@ -339,3 +341,18 @@ div.dice {
 
 div.saved {
   background-color: #fda988; }
+
+@media (max-width: 650px) {
+  .wrapper {
+    padding: 0; }
+  .score-sheet {
+    border-radius: 0;
+    padding: 50px 10px; }
+  .score-info {
+    display: none; }
+  .score-label {
+    grid-column: span 2; }
+  .score-box {
+    grid-column: span 3; }
+  div.dice {
+    background-size: 2em; } }

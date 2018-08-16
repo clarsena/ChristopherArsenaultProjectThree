@@ -234,11 +234,6 @@ body {
   background-color: #be0026;
   font-family: "Open Sans", sans-serif; }
 
-h1 {
-  margin: 25px 0;
-  text-align: center;
-  color: palegoldenrod; }
-
 h2, h3 {
   position: relative;
   top: 50%;
@@ -273,7 +268,6 @@ h2, h3 {
   -webkit-box-shadow: 5px 5px 5px #000000;
   box-shadow: 5px 5px 5px #000000; }
   .score-sheet div {
-    padding: 3px 0 0 3px;
     border: 2px solid black;
     -webkit-box-shadow: 3px 3px 3px #000000;
     box-shadow: 3px 3px 3px #000000; }
@@ -292,6 +286,9 @@ div.section-header {
 
 .score-info {
   grid-column: span 2; }
+
+.score-label, .score-box {
+  padding: 3px 0 0 3px; }
 
 .score-box {
   grid-column: span 2;
@@ -341,6 +338,9 @@ div.dice {
 
 div.saved {
   background-color: #fda988; }
+
+.top-total-score, .bonus-score, .bottom-total-score, .total-score-score {
+  color: #242424; }
 
 @media (max-width: 650px) {
   .wrapper {

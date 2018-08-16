@@ -54,12 +54,6 @@ body {
     font-family: "Open Sans", sans-serif;
 }
 
-h1 {
-    margin: 25px 0;
-    text-align: center;
-    color: palegoldenrod;
-}
-
 h2, h3 {
     position: relative;
     top: 50%;
@@ -91,7 +85,6 @@ h2, h3 {
     border-radius: 20px;
     box-shadow: 5px 5px 5px #000000;
     & div {
-        padding: 3px 0 0 3px;
         border: 2px solid black;
         box-shadow: 3px 3px 3px #000000;
     }
@@ -112,6 +105,10 @@ div.section-header {
 
 .score-info {
     grid-column: span 2;
+}
+
+.score-label, .score-box {
+    padding: 3px 0 0 3px;
 }
 
 .score-box {
@@ -167,6 +164,10 @@ div.dice {
 
 div.saved {
     background-color: rgb(253, 169, 136);
+}
+
+.top-total-score, .bonus-score, .bottom-total-score, .total-score-score {
+    color: #242424;
 }
 
 @media (max-width: 650px) {

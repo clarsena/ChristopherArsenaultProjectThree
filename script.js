@@ -240,7 +240,8 @@ yahtzeeApp.clickRoll = function() {
                 for(let i=0; i < 5; i++) {
                     $(`.dice-${i}`).addClass(`die-${yahtzeeApp.diceRoll.dice[i].value}`);
                 }
-                yahtzeeApp.diceRoll.rollChance++;      
+                yahtzeeApp.diceRoll.rollChance++;
+                $('.rolls-count').text(`${yahtzeeApp.diceRoll.rollChance} / 3`);     
             } else {
                 alert("You must pick a score to set");
             }
@@ -253,6 +254,7 @@ yahtzeeApp.clickScoreBox = function (scoreSection, scoreType) {
     if(!yahtzeeApp.diceRoll.rolled) {
         alert("Please roll your dice first!!!");
     } else {
+        $('.rolls-count').text('');
         if (yahtzeeApp.scoreCard[scoreType].scored === false) {
             yahtzeeApp[scoreSection](scoreType);
             $(`#${scoreType}`).addClass('marked');
@@ -264,6 +266,7 @@ yahtzeeApp.clickScoreBox = function (scoreSection, scoreType) {
             });
             yahtzeeApp.resetDiceImage();
             yahtzeeApp.scoreCard.gameRound++;
+            $('.turns-count').text(yahtzeeApp.scoreCard.gameRound);
             yahtzeeApp.checkEndGame();
         } else {
             alert(`You have already scored your ${scoreType.toUpperCase()}. Please pick something else.`);
@@ -308,11 +311,11 @@ yahtzeeApp.reset = function () {
 }
 
 yahtzeeApp.init = function () {
-        yahtzeeApp.clickRoll();
-        yahtzeeApp.clickTopScore();
-        yahtzeeApp.clickBottomScore();
-        yahtzeeApp.clickDice();
-        yahtzeeApp.reset();
+    yahtzeeApp.clickRoll();
+    yahtzeeApp.clickTopScore();
+    yahtzeeApp.clickBottomScore();
+    yahtzeeApp.clickDice();
+    yahtzeeApp.reset();
 }
 
 $(document).ready(function() {

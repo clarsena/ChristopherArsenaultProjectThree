@@ -80,7 +80,7 @@ h2, h3 {
     background-color: rgb(226, 226, 226);
     display: grid;
     grid-template-columns: repeat(5, minmax(50px, 1fr));
-    grid-template-rows: repeat(22, 50px);
+    grid-template-rows: repeat(23, 50px);
     grid-gap: 5px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px #000000;
@@ -98,21 +98,19 @@ div.section-header {
 }
 
 .score-label {
-    grid-column: span 1;
+    grid-column: 1 / span 1;
     font-weight: 600;
     background-color: rgb(253, 169, 136);
+    padding: 3px 0 0 3px;
 }
 
 .score-info {
-    grid-column: span 2;
-}
-
-.score-label, .score-box {
+    grid-column: 2 / span 2;
     padding: 3px 0 0 3px;
 }
 
 .score-box {
-    grid-column: span 2;
+    grid-column: 4 / span 2;
     background-color: rgb(141, 196, 247);
     color: #FFFFFF;
     text-align: center;
@@ -121,17 +119,6 @@ div.section-header {
     &.marked {
         background-color: #242424;
         color: #FFFFFF;
-    }
-}
-
-.reset {
-    grid-area: -2 / -2;
-    text-align: center;
-    background-color: tomato;
-    color: white;
-    padding: 0;
-    &-hidden {
-        display: none;
     }
 }
 
@@ -148,6 +135,7 @@ div.section-header {
 }
 
 div.dice {
+    grid-row: -3;
     grid-column: span 1;
     grid-row: span 2;
     border: none;
@@ -168,6 +156,25 @@ div.saved {
 
 .top-total-score, .bonus-score, .bottom-total-score, .total-score-score {
     color: #242424;
+}
+
+.reset {
+    grid-column: 2;
+    text-align: center;
+    background-color: tomato;
+    color: white;
+    padding: 0;
+    &-hidden {
+        display: none;
+    }
+}
+
+.rolls {
+    grid-column: 4;
+}
+
+.turns {
+    grid-column: 5;
 }
 
 @media (max-width: 650px) {

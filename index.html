@@ -11,71 +11,76 @@
 <body>
 
     <div class="wrapper">
-        <!-- <h1>Yahtzee</h1> -->
-        <img src="assets/yahtzee-logo.png" alt="Yahtzee Logo" class="logo">
 
-        <div class="score-sheet">
-            <div class="section-header">Top Section</div>
-            <div class="score-label">Ones</div>
-            <div class="score-info">Counts and Adds only Ones</div>
-            <div class="top-score score-box" id="one"></div>
-            <div class="score-label">Twos</div>
-            <div class="score-info">Counts and Adds only Twos</div>
-            <div class="top-score score-box" id="two"></div>
-            <div class="score-label">Threes</div>
-            <div class="score-info">Counts and Adds only Threes</div>
-            <div class="top-score score-box" id="three"></div>
-            <div class="score-label">Fours</div>
-            <div class="score-info">Counts and Adds only Fours</div>
-            <div class="top-score score-box" id="four"></div>
-            <div class="score-label">Fives</div>
-            <div class="score-info">Counts and Adds only Fives</div>
-            <div class="top-score score-box" id="five"></div>
-            <div class="score-label">Sixes</div>
-            <div class="score-info">Counts and Adds only Sixes</div>
-            <div class="top-score score-box" id="six"></div>
-            <div class="score-label">Bonus</div>
-            <div class="score-info">If total score is 63 or over - Score 35</div>
-            <div class="score-box" id="bonus"></div>
-            <div class="score-label top-total top-total-label">Top Score</div>
-            <div class="score-info"></div>
-            <div class="score-box top-total top-total-score" id="top-total-score"></div>
-            <div class="section-header">Bottom Section</div>
-            <div class="score-label">Three of a Kind</div>
-            <div class="score-info">3 of any number - Add total of all dice</div>
-            <div class="score-box bottom-score" id="threeKind"></div>
-            <div class="score-label">Four of a Kind</div>
-            <div class="score-info">4 of any number - Add total of all dice</div>
-            <div class="score-box bottom-score" id="fourKind"></div>
-            <div class="score-label">Full House</div>
-            <div class="score-info">3 of one and 2 of another - Score 25</div>
-            <div class="score-box bottom-score" id="fullHouse"></div>
-            <div class="score-label">Small Straight</div>
-            <div class="score-info">4 in a row - Score 30</div>
-            <div class="score-box bottom-score" id="small"></div>
-            <div class="score-label">Large Straight</div>
-            <div class="score-info">5 in a row - Score 40</div>
-            <div class="score-box bottom-score" id="large"></div>
-            <div class="score-label">Yahtzee</div>
-            <div class="score-info">5 of any number - Score 50</div>
-            <div class="score-box bottom-score" id="yahtzee"></div>
-            <div class="score-label">Chance</div>
-            <div class="score-info">Add total of all dice</div>
-            <div class="score-box bottom-score" id="chance"></div>
-            <div class="score-label bottom-total bottom-total-label">Bottom Score</div>
-            <div class="score-info"></div>
-            <div class="score-box bottom-total bottom-total-score" id="bottom-total-score"><h3></h3></div>
-            <div class="score-label total-score-label">Overall Total</div>
-            <div class="score-info"></div>
-            <div class="score-box total-score-score" id="total-score-score"><h3></h3></div>
-            <div class="score-label dice dice-0" id="dice0"></div>
-            <div class="score-label dice dice-1" id="dice1"></div>
-            <div class="score-label dice dice-2" id="dice2"></div>
-            <div class="score-label dice dice-3" id="dice3"></div>
-            <div class="score-label dice dice-4" id="dice4"></div>
-            <div class="roll"><h2>Roll</h2></div>
-            <div class="reset reset-hidden"><h2>Reset</h2></div>
-        </div>
+        <!-- START OF MAIN SECTION -->
+        <main>
+            <img src="assets/yahtzee-logo.png" alt="Yahtzee Logo" class="logo">
+
+            <div class="score-sheet">
+                <div class="section-header">Top Section</div>
+                <div class="score-label">Ones</div>
+                <div class="score-info">Counts and Adds only Ones</div>
+                <div class="top-score score-box" id="one"></div>
+                <div class="score-label">Twos</div>
+                <div class="score-info">Counts and Adds only Twos</div>
+                <div class="top-score score-box" id="two"></div>
+                <div class="score-label">Threes</div>
+                <div class="score-info">Counts and Adds only Threes</div>
+                <div class="top-score score-box" id="three"></div>
+                <div class="score-label">Fours</div>
+                <div class="score-info">Counts and Adds only Fours</div>
+                <div class="top-score score-box" id="four"></div>
+                <div class="score-label">Fives</div>
+                <div class="score-info">Counts and Adds only Fives</div>
+                <div class="top-score score-box" id="five"></div>
+                <div class="score-label">Sixes</div>
+                <div class="score-info">Counts and Adds only Sixes</div>
+                <div class="top-score score-box" id="six"></div>
+                <div class="score-label">Bonus</div>
+                <div class="score-info">If total score is 63 or over - Score 35</div>
+                <div class="score-box bonus-score" id="bonus"></div>
+                <div class="score-label top-total top-total-label">Top Score</div>
+                <div class="score-info"></div>
+                <div class="score-box top-total top-total-score" id="top-total-score"></div>
+                <div class="section-header">Bottom Section</div>
+                <div class="score-label">Three of a Kind</div>
+                <div class="score-info">3 of any number - Add total of all dice</div>
+                <div class="score-box bottom-score" id="threeKind"></div>
+                <div class="score-label">Four of a Kind</div>
+                <div class="score-info">4 of any number - Add total of all dice</div>
+                <div class="score-box bottom-score" id="fourKind"></div>
+                <div class="score-label">Full House</div>
+                <div class="score-info">3 of one and 2 of another - Score 25</div>
+                <div class="score-box bottom-score" id="fullHouse"></div>
+                <div class="score-label">Small Straight</div>
+                <div class="score-info">4 in a row - Score 30</div>
+                <div class="score-box bottom-score" id="small"></div>
+                <div class="score-label">Large Straight</div>
+                <div class="score-info">5 in a row - Score 40</div>
+                <div class="score-box bottom-score" id="large"></div>
+                <div class="score-label">Yahtzee</div>
+                <div class="score-info">5 of any number - Score 50</div>
+                <div class="score-box bottom-score" id="yahtzee"></div>
+                <div class="score-label">Chance</div>
+                <div class="score-info">Add total of all dice</div>
+                <div class="score-box bottom-score" id="chance"></div>
+                <div class="score-label bottom-total bottom-total-label">Bottom Score</div>
+                <div class="score-info"></div>
+                <div class="score-box bottom-total bottom-total-score" id="bottom-total-score"><h3></h3></div>
+                <div class="score-label total-score-label">Overall Total</div>
+                <div class="score-info"></div>
+                <div class="score-box total-score-score" id="total-score-score"><h3></h3></div>
+                <div class="score-label dice dice-0" id="dice0"></div>
+                <div class="score-label dice dice-1" id="dice1"></div>
+                <div class="score-label dice dice-2" id="dice2"></div>
+                <div class="score-label dice dice-3" id="dice3"></div>
+                <div class="score-label dice dice-4" id="dice4"></div>
+                <div class="roll"><h2>Roll</h2></div>
+                <div class="reset reset-hidden"><h2>Reset</h2></div>
+                <div class="rolls"><h2>Roll: <span class="rolls-count"></span></h2></div>
+                <div class="turns"><h2>Turn: <span class="turns-count">1</span></h2></div>
+            </div>
+        </main>
 
     </div>
 

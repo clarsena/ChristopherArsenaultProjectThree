@@ -61,26 +61,32 @@ yahtzeeApp.scoreCard = {
     gameRound: 1,
 }
 
-// INITIAL DICE ROLL FUNCTION TO ROLL THE DICE
+// DICE TRACKING OBJECT AS WELL AS DICE ROLLING AND SORTING METHODS
 yahtzeeApp.diceRoll = {
     rolled: false,
-    dice: [],
+    dice: [{value: 0, marked: false}, {value: 0, marked: false}, {value: 0, marked: false}, {value: 0, marked: false}, {value: 0, marked: false}],
+    convertedDice: [],
     rollChance: 0,
-    rollDice: function (numToRoll) {
-        for (let i = 0; i < numToRoll; i++) {
-            this.dice[i] = Math.floor(Math.random() * 6) + 1;
+    rollDice: function () {
+        yahtzeeApp.diceRoll.dice.forEach((die) => {
+            if(die.marked === false) {
+                die.value = Math.floor(Math.random() * 6) + 1; 
+            }
+        });
+        for(let i = 0; i < 5; i++) {
+            yahtzeeApp.diceRoll.convertedDice[i] = yahtzeeApp.diceRoll.dice[i].value;
         }
     },
     sortedDice: function () {
-        return this.dice.sort((a, b) => a-b);    
+        return yahtzeeApp.diceRoll.convertedDice.sort((a, b) => a-b);    
     }
 }
 
 //  SMALL METHOD TO TOTAL THE SUM OF THE DICE - USED FOR BOTTOM SCORES THREE OF A KIND, FOUR OF A KIND AND CHANCE
 yahtzeeApp.sumDice = function (choice) {
     for (let i = 0; i < 5; i++) {
-        yahtzeeApp.scoreCard[choice].value += yahtzeeApp.diceRoll.dice[i];
-        yahtzeeApp.scoreCard.bottomScoreTotal += yahtzeeApp.diceRoll.dice[i];
+        yahtzeeApp.scoreCard[choice].value += yahtzeeApp.diceRoll.dice[i].value;
+        yahtzeeApp.scoreCard.bottomScoreTotal += yahtzeeApp.diceRoll.dice[i].value;
     }
 }
 
@@ -96,31 +102,31 @@ yahtzeeApp.writeValues = function (section, selection) {
 
 //  METHOD TO CALCULATE THE SCORE FOR THE TOP AREA. READS IN WHICH CATEGORY WAS CLICKED, ASSIGNS THE PROPER VALUE AND READS THROUGH THE DICES AND ADDS THEM UP APPROPRIATELY. THEN ADDS TO IT'S PROPER AREA, THE TOP SCORE AND THE TOTAL SCORE
 yahtzeeApp.addTopScore = function (selection) {
-    let value = 0;
+    let dieValue = 0;
         switch(selection) {
             case "one":
-                value = 1;
+                dieValue = 1;
                 break;
             case "two":
-                value = 2;
+                dieValue = 2;
                 break;
             case "three":
-                value = 3;
+                dieValue = 3;
                 break;
             case "four":
-                value = 4;
+                dieValue = 4;
                 break;
             case "five":
-                value = 5;
+                dieValue = 5;
                 break;
             case "six":
-                value = 6;
+                dieValue = 6;
                 break;
         }
         for (let i = 0; i < 5; i++) {
-            if (yahtzeeApp.diceRoll.dice[i] === value) {
-                yahtzeeApp.scoreCard[selection].value += value;
-                yahtzeeApp.scoreCard.topScoreTotal += value;
+            if (yahtzeeApp.diceRoll.dice[i].value === dieValue) {
+                yahtzeeApp.scoreCard[selection].value += dieValue;
+                yahtzeeApp.scoreCard.topScoreTotal += dieValue;
             }
         }
         if (yahtzeeApp.scoreCard.topScoreTotal >= 63) {
@@ -193,20 +199,41 @@ yahtzeeApp.addBottomScore = function (selection) {
         yahtzeeApp.scoreCard[selection].scored = true;
 }
 
+//  CHECK TO SEE IF THE END OF THE GAME HAS BEEN REACHED
+yahtzeeApp.checkEndGame = function () {
+    if(yahtzeeApp.scoreCard.gameRound > 13) {
+        let closingStatement = "";
+        if(yahtzeeApp.scoreCard.totalScore > 300) {
+            closingStatement = "Amazing job!!! You absolutely rocked it!!!";
+        } else if (yahtzeeApp.scoreCard.totalScore > 200) {
+            closingStatement = "Well done!! You are really good at this game!!";
+        } else if (yahtzeeApp.scoreCard.totalScore > 100) {
+            closingStatement = "Not too bad, but you can use some more work.";
+        } else {
+            closingStatement = "You....definitely need more practice.";
+        }
+        alert(`The game is finished!! \nYou got a final score of ${yahtzeeApp.scoreCard.totalScore} points.\n${closingStatement}\nPlease reset the game to start again.`);
+        $('.reset').removeClass('reset-hidden');
+    }
+}
+
 //  EVENT LISTENER FOR A CLICK ONTO THE ROLL BUTTON
 yahtzeeApp.clickRoll = function() {
     $('.roll').on('click', function(e) {
-        yahtzeeApp.diceRoll.rolled = true;
-        if(yahtzeeApp.diceRoll.rollChance < 3) {
-            $('.dice').empty();
-            yahtzeeApp.diceRoll.rollDice(5);
-            const sortedRoll = yahtzeeApp.diceRoll.sortedDice();
-            for(let i=0; i < 5; i++) {
-                $(`.dice-${i}`).append(`<h3>${sortedRoll[i]}</h3>`);
-            }
-            yahtzeeApp.diceRoll.rollChance++;      
+        if (yahtzeeApp.scoreCard.gameRound > 13) {
+            yahtzeeApp.checkEndGame();
         } else {
-            alert("You must pick a score to set");
+            yahtzeeApp.diceRoll.rolled = true;
+            if(yahtzeeApp.diceRoll.rollChance < 3) {
+                $('.dice').empty();
+                yahtzeeApp.diceRoll.rollDice();
+                for(let i=0; i < 5; i++) {
+                    $(`.dice-${i}`).append(`<h3>${yahtzeeApp.diceRoll.dice[i].value}</h3>`);
+                }
+                yahtzeeApp.diceRoll.rollChance++;      
+            } else {
+                alert("You must pick a score to set");
+            }
         }
     });
 }
@@ -218,16 +245,15 @@ yahtzeeApp.clickScoreBox = function (scoreSection, scoreType) {
     } else {
         if (yahtzeeApp.scoreCard[scoreType].scored === false) {
             yahtzeeApp[scoreSection](scoreType);
-            $(this).addClass('marked');
-            $('.dice').empty();
+            $(`#${scoreType}`).addClass('marked');
+            $('.dice').empty().removeClass('saved');
             yahtzeeApp.diceRoll.rolled = false;
             yahtzeeApp.diceRoll.rollChance = 0;
+            yahtzeeApp.diceRoll.dice.forEach((die) => {
+                die.marked = false;
+            });
             yahtzeeApp.scoreCard.gameRound++;
-            if(yahtzeeApp.scoreCard.gameRound > 13) {
-                alert("GAME OVER!!! PLEASE RESTART!!!!");
-                $('.reset').removeClass('reset-hidden');
-
-            }
+            yahtzeeApp.checkEndGame();
         } else {
             alert(`You have already scored your ${scoreType.toUpperCase()}. Please pick something else.`);
         }
@@ -250,6 +276,18 @@ yahtzeeApp.clickBottomScore = function () {
     });
 }
 
+yahtzeeApp.clickDice = function () {
+    $('.dice').on('click', function(event) {
+        const diceNumber = $(this).attr('id').substring(4);
+        if(yahtzeeApp.diceRoll.dice[diceNumber].marked) {
+            yahtzeeApp.diceRoll.dice[diceNumber].marked = false;
+        } else {
+            yahtzeeApp.diceRoll.dice[diceNumber].marked = true;
+        }
+        $(this).toggleClass('saved');
+    })
+}
+
 yahtzeeApp.reset = function () {
     $('.reset').on('click', function(event) {
         document.location = "";
@@ -260,6 +298,7 @@ yahtzeeApp.init = function () {
         yahtzeeApp.clickRoll();
         yahtzeeApp.clickTopScore();
         yahtzeeApp.clickBottomScore();
+        yahtzeeApp.clickDice();
         yahtzeeApp.reset();
 }
 
@@ -268,9 +307,9 @@ $(document).ready(function() {
 });
 
 //  THINGS TO STILL IMPLEMENT
-//  marking dice to not be re-rolled
-//  make a separate re roll function 
 //  dice images for dice roll
+//  marking dice to not be re-rolled -- DONE
+//  make a separate re roll function -- DONE
 //  13 turns total -- DONE
 //  3 rolls max per turn -- DONE
 //  full house regex check -- DONE

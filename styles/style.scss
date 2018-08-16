@@ -48,7 +48,7 @@ a {
 
 body {
     font-size: 1.4rem;
-    background-color: teal;
+    background-color: rgb(190, 0, 38);
     font-family: "Open Sans", sans-serif;
 }
 
@@ -67,13 +67,20 @@ h2, h3 {
 .wrapper {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 0 50px;
+}
+
+.logo {
+    width: 25%;
+    margin: 15px auto;
+    display: block;
 }
 
 .score-sheet {
     justify-content: center;
     align-content: center;
     padding: 50px;
-    background-color: #D3D3D3;
+    background-color: rgb(226, 226, 226);
     display: grid;
     grid-template-columns: repeat(6, 70px);
     grid-template-rows: repeat(8, 70px);
@@ -154,6 +161,7 @@ div.reset {
 
 .score-label {
     font-weight: 600;
+    background-color: rgb(253, 169, 136);
 }
 
 div.roll {
@@ -162,6 +170,7 @@ div.roll {
     position: relative;
     padding: 0;
     box-shadow: 3px 3px 3px #000000;
+    background-color: rgb(253, 169, 136);
     &:hover {
         background-color: tomato;
         color: white;
@@ -175,7 +184,7 @@ div.roll {
 }
 
 div.score-box {
-    background-color: teal;
+    background-color: rgb(141, 196, 247);
     color: #FFFFFF;
     text-align: center;
     font-size: 2.2rem;
@@ -185,4 +194,8 @@ div.score-box {
 .score-box.marked {
     background-color: #242424;
     color: #FFFFFF;
+}
+
+.saved {
+    background-color: goldenrod;
 }

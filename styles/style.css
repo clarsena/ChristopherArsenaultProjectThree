@@ -242,7 +242,7 @@ h2, h3 {
   transform: translateY(-50%); }
 
 .wrapper {
-  max-width: 1100px;
+  max-width: 1250px;
   margin: 0 auto;
   padding: 0 50px; }
 
@@ -252,7 +252,18 @@ h2, h3 {
   display: block; }
 
 .score-sheet {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+
+.score-section {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 calc(50% - 10px);
+  flex: 0 1 calc(50% - 10px);
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -262,12 +273,12 @@ h2, h3 {
   background-color: #e2e2e2;
   display: grid;
   grid-template-columns: repeat(5, minmax(50px, 1fr));
-  grid-template-rows: repeat(23, 50px);
+  grid-template-rows: repeat(11, 50px);
   grid-gap: 5px;
   border-radius: 20px;
   -webkit-box-shadow: 5px 5px 5px #000000;
   box-shadow: 5px 5px 5px #000000; }
-  .score-sheet div {
+  .score-section div {
     border: 2px solid black;
     -webkit-box-shadow: 3px 3px 3px #000000;
     box-shadow: 3px 3px 3px #000000; }
@@ -323,7 +334,7 @@ div.dice {
   background-color: #e2e2e2;
   display: inline-block;
   min-height: 1em;
-  background-size: 3em;
+  background-size: 2.5em;
   background-repeat: no-repeat;
   background-position: center; }
 
@@ -348,7 +359,7 @@ div.saved {
 .turns {
   grid-column: 5; }
 
-@media (max-width: 650px) {
+@media (max-width: 1000px) {
   .wrapper {
     padding: 0; }
   .score-sheet {
@@ -361,4 +372,6 @@ div.saved {
   .score-box {
     grid-column: span 3; }
   div.dice {
-    background-size: 2em; } }
+    background-size: 2em; }
+  .rolls, .turns {
+    font-size: 1.2rem; } }

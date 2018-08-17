@@ -61,7 +61,7 @@ h2, h3 {
 }
 
 .wrapper {
-    max-width: 1100px;
+    max-width: 1250px;
     margin: 0 auto;
     padding: 0 50px;
 }
@@ -73,14 +73,20 @@ h2, h3 {
 }
 
 .score-sheet {
+    display: flex;
     width: 100%;
+    justify-content: space-between;
+}
+
+.score-section {
+    flex: 0 1 calc(50% - 10px);
     justify-content: center;
     align-content: center;
     padding: 50px;
     background-color: rgb(226, 226, 226);
     display: grid;
     grid-template-columns: repeat(5, minmax(50px, 1fr));
-    grid-template-rows: repeat(23, 50px);
+    grid-template-rows: repeat(11, 50px);
     grid-gap: 5px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px #000000;
@@ -145,7 +151,7 @@ div.dice {
     background-color: rgb(226, 226, 226);
     display: inline-block;
     min-height: 1em;
-    background-size: 3em;
+    background-size: 2.5em;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -177,7 +183,7 @@ div.saved {
     grid-column: 5;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 1000px) {
     .wrapper {
         padding: 0;
     }
@@ -201,5 +207,9 @@ div.saved {
 
     div.dice {
         background-size: 2em;
+    }
+
+    .rolls, .turns {
+        font-size: 1.2rem;
     }
 }

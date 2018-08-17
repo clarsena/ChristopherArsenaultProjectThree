@@ -184,6 +184,11 @@ div.saved {
     grid-column: 5;
 }
 
+.rolls, .turns {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
 @media (max-width: 1000px) {
     .wrapper {
         padding: 0;
@@ -191,7 +196,7 @@ div.saved {
 
     .score-sheet {
         border-radius: 0;
-        padding: 50px 10px;
+        padding: 0 10px;
     }
 
     .score-info {
@@ -208,10 +213,6 @@ div.saved {
 
     div.dice {
         background-size: 2em;
-    }
-
-    .rolls, .turns {
-        font-size: 1.2rem;
     }
 }
 
@@ -238,10 +239,36 @@ div.saved {
     }
 
     .roll, .rolls, .turns, .reset {
-        font-size: 1.0rem;
+        font-size: 1.2rem;
     }
 
     div.dice {
         background-size: 1.8em;
+        grid-row: span 1;
+    }
+
+    div.dice-0 {
+        grid-row: 10;
+        grid-column: 1;
+    }
+
+    div.dice-1 {
+        grid-row: 10;
+        grid-column: 3;
+    }
+
+    div.dice-2 {
+        grid-row: 10;
+        grid-column: 5;
+    }
+
+    div.dice-3 {
+        grid-row: 11;
+        grid-column: 2;
+    }
+
+    div.dice-4 {
+        grid-row: 11;
+        grid-column: 4;
     }
 }

@@ -241,7 +241,7 @@ yahtzeeApp.clickRoll = function() {
                     $(`.dice-${i}`).addClass(`die-${yahtzeeApp.diceRoll.dice[i].value}`);
                 }
                 yahtzeeApp.diceRoll.rollChance++;
-                $('.rolls-count').text(`${yahtzeeApp.diceRoll.rollChance} / 3`);     
+                $('.rolls-count').text(`${yahtzeeApp.diceRoll.rollChance}/3`);     
             } else {
                 alert("You must pick a score to set");
             }

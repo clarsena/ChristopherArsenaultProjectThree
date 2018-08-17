@@ -58,6 +58,7 @@ h2, h3 {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    overflow-wrap: break-word;
 }
 
 .wrapper {
@@ -74,7 +75,7 @@ h2, h3 {
 
 .score-sheet {
     display: flex;
-    width: 100%;
+    max-width: 100%;
     justify-content: space-between;
 }
 
@@ -85,7 +86,7 @@ h2, h3 {
     padding: 50px;
     background-color: rgb(226, 226, 226);
     display: grid;
-    grid-template-columns: repeat(5, minmax(50px, 1fr));
+    grid-template-columns: repeat(5, minmax(25px, 1fr));
     grid-template-rows: repeat(11, 50px);
     grid-gap: 5px;
     border-radius: 20px;
@@ -148,7 +149,7 @@ div.dice {
     box-shadow: none;
     text-align: center;
     font-size: 2.2rem;
-    background-color: rgb(226, 226, 226);
+    background-color: transparent;
     display: inline-block;
     min-height: 1em;
     background-size: 2.5em;
@@ -211,5 +212,36 @@ div.saved {
 
     .rolls, .turns {
         font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 775px) {
+    .score-section {
+        padding: 0px;
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        flex-basis: 50%;
+        &:first-child {
+            margin-right: 10px;
+        }
+    }
+
+    .section-header, .rolls, .turns {
+        background-color: rgb(226, 226, 226);
+    }
+}
+
+@media (max-width: 575px) {
+    div.section-header {
+        font-size: 1.6rem;
+    }
+
+    .roll, .rolls, .turns, .reset {
+        font-size: 1.0rem;
+    }
+
+    div.dice {
+        background-size: 1.8em;
     }
 }

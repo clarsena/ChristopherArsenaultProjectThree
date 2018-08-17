@@ -394,12 +394,18 @@ div.saved {
     background-color: #e2e2e2; } }
 
 @media (max-width: 575px) {
+  .score-section {
+    grid-template-rows: repeat(11, 35px); }
+  .score-box {
+    font-size: 1.6rem; }
   div.section-header {
     font-size: 1.6rem; }
+  .score-label {
+    font-size: 1.2rem; }
   .roll, .rolls, .turns, .reset {
     font-size: 1.2rem; }
   div.dice {
-    background-size: 1.8em;
+    background-size: 1.3em;
     grid-row: span 1; }
   div.dice-0 {
     grid-row: 10;

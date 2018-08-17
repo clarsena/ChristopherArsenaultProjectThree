@@ -139,6 +139,9 @@ div.section-header {
         background-color: tomato;
         color: white;
     }
+    &-hidden {
+        display: none;
+    }
 }
 
 div.dice {
@@ -213,6 +216,10 @@ div.saved {
 
     div.dice {
         background-size: 2em;
+    }
+
+    .roll, .reset {
+        grid-column: 1 / 3;
     }
 }
 

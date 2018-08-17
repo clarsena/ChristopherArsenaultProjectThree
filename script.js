@@ -213,7 +213,9 @@ yahtzeeApp.checkEndGame = function () {
             closingStatement = "You....definitely need more practice.";
         }
         alert(`The game is finished!! \nYou got a final score of ${yahtzeeApp.scoreCard.totalScore} points.\n${closingStatement}\nPlease reset the game to start again.`);
+        $('.roll').addClass('roll-hidden');
         $('.reset').removeClass('reset-hidden');
+
     }
 }
 

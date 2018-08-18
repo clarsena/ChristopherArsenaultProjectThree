@@ -218,7 +218,7 @@ yahtzeeApp.checkEndGame = function () {
 
     }
 }
-
+//  ENSURE THE DICE IMAGES ARE CLEARED BEFORE PUTTING THE NEW ONES ON
 yahtzeeApp.resetDiceImage = function(i) {
     for(let i=0; i < 5; i++) {
         $(`.dice-${i}`).removeClass (function (index, classes) {
@@ -229,7 +229,7 @@ yahtzeeApp.resetDiceImage = function(i) {
     }
 }
 
-//  EVENT LISTENER FOR A CLICK ONTO THE ROLL BUTTON
+//  EVENT LISTENER FOR A CLICK ONTO THE ROLL BUTTON. FIRST IT CHECKS IF THE GAME TURNS ARE ALL DONE. THEN IT CHECKS IF ALL ROLLS HAVE BEEN USED FOR THE CURRENT TURN. THEN, IT CALLS THE DICE ROLL METHOD AND ADJUSTS THE CURRENT ROLL NUMBER.
 yahtzeeApp.clickRoll = function() {
     $('.roll').on('click', function(e) {
         if (yahtzeeApp.scoreCard.gameRound > 13) {
@@ -292,6 +292,7 @@ yahtzeeApp.clickBottomScore = function () {
     });
 }
 
+//  EVENT LISTENER FOR A CLICK ON THE DICE TO MARK THEM FOR SAVING
 yahtzeeApp.clickDice = function () {
     $('.dice').on('click', function(event) {
         if(yahtzeeApp.diceRoll.rolled) {
@@ -306,12 +307,14 @@ yahtzeeApp.clickDice = function () {
     })
 }
 
+//  EVENT LISTENER TO RESET THE GAME WHEN IT IS FINISHED
 yahtzeeApp.reset = function () {
     $('.reset').on('click', function(event) {
         document.location = "";
     });
 }
 
+//  GAME INITIALIZE METHOD
 yahtzeeApp.init = function () {
     yahtzeeApp.clickRoll();
     yahtzeeApp.clickTopScore();
@@ -320,18 +323,7 @@ yahtzeeApp.init = function () {
     yahtzeeApp.reset();
 }
 
+//  DOCUMENT READY - INITIALIZE THE GAME
 $(document).ready(function() {
         yahtzeeApp.init();
 });
-
-//  THINGS TO STILL IMPLEMENT
-//  labels to keep track of current turn / current roll
-//  dice images for dice roll
-//  marking dice to not be re-rolled -- DONE
-//  make a separate re roll function -- DONE
-//  13 turns total -- DONE
-//  3 rolls max per turn -- DONE
-//  full house regex check -- DONE
-//  marking scores already done to not be changed -- DONE
-//  bonus top score -- DONE
-//  after commiting score, clear the dice so we can't commit multiple times -- DONE

@@ -50,7 +50,8 @@ yahtzeeApp.scoreCard = {
     },
     yahtzee: {
         value: 0,
-        scored: false
+        scored: false,
+        bonusYahtzee: false
     },
     chance: {
         value: 0,
@@ -76,6 +77,7 @@ yahtzeeApp.diceRoll = {
         for(let i = 0; i < 5; i++) {
             yahtzeeApp.diceRoll.convertedDice[i] = yahtzeeApp.diceRoll.dice[i].value;
         }
+        console.log(yahtzeeApp.diceRoll.dice);
     },
     sortedDice: function () {
         return yahtzeeApp.diceRoll.convertedDice.sort((a, b) => a-b);    
@@ -97,6 +99,7 @@ yahtzeeApp.writeValues = function (section, selection) {
     $(`#${section}-total-score`).append(`<h3>${yahtzeeApp.scoreCard[scoreTotal]}</h3>`);
     $(`#total-score-score`).empty();
     $(`#total-score-score`).append(`<h3>${yahtzeeApp.scoreCard.totalScore}</h3>`);
+    $(`#${selection}`).empty();
     $(`#${selection}`).append(`<h3>${yahtzeeApp.scoreCard[selection].value}</h3>`);
 }
 
@@ -185,9 +188,17 @@ yahtzeeApp.addBottomScore = function (selection) {
             case "yahtzee":
                 testCondition = /11111|22222|33333|44444|55555|66666/;
                 if(testCondition.test(diceToString)) {
-                    alert("HOLY CRAP, YOU GOT A YAHTZEE!!!!!!");
-                    yahtzeeApp.scoreCard[selection].value += 50;
-                    yahtzeeApp.scoreCard.bottomScoreTotal += 50;
+                    if(yahtzeeApp.scoreCard[selection].bonusYahtzee) {
+                        alert("HOLY CRAP, YOU'RE ROLLIN' IN THE YAHTZEES!!!!!!");
+                        yahtzeeApp.scoreCard.gameRound--;
+                        yahtzeeApp.scoreCard[selection].value += 100;
+                        yahtzeeApp.scoreCard.bottomScoreTotal += 100;
+                    } else {
+                        alert("HOLY CRAP, YOU GOT A YAHTZEE!!!!!!");
+                        yahtzeeApp.scoreCard[selection].value += 50;
+                        yahtzeeApp.scoreCard.bottomScoreTotal += 50;
+                        yahtzeeApp.scoreCard[selection].bonusYahtzee = true;
+                    }
                 }
                 break;
             case "chance":
@@ -229,6 +240,12 @@ yahtzeeApp.resetDiceImage = function(i) {
     }
 }
 
+yahtzeeApp.bonusYahtzeeCheck = function() {
+    const diceToString = yahtzeeApp.diceRoll.sortedDice().join('');
+    const testCondition = /11111|22222|33333|44444|55555|66666/;
+    return testCondition.test(diceToString)        
+}
+
 //  EVENT LISTENER FOR A CLICK ONTO THE ROLL BUTTON. FIRST IT CHECKS IF THE GAME TURNS ARE ALL DONE. THEN IT CHECKS IF ALL ROLLS HAVE BEEN USED FOR THE CURRENT TURN. THEN, IT CALLS THE DICE ROLL METHOD AND ADJUSTS THE CURRENT ROLL NUMBER.
 yahtzeeApp.clickRoll = function() {
     $('.roll').on('click', function(e) {
@@ -257,7 +274,7 @@ yahtzeeApp.clickScoreBox = function (scoreSection, scoreType) {
         alert("Please roll your dice first!!!");
     } else {
         $('.rolls-count').text('');
-        if (yahtzeeApp.scoreCard[scoreType].scored === false) {
+        if (yahtzeeApp.scoreCard[scoreType].scored === false || (scoreType === "yahtzee" && yahtzeeApp.scoreCard.yahtzee.bonusYahtzee && yahtzeeApp.bonusYahtzeeCheck)) {
             yahtzeeApp[scoreSection](scoreType);
             $(`#${scoreType}`).addClass('marked');
             $('.dice').empty().removeClass('saved');

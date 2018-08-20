@@ -331,6 +331,12 @@ yahtzeeApp.reset = function () {
     });
 }
 
+yahtzeeApp.showRules = function () {
+    $('.rules-button').on('click', function() {
+        $('.rules').toggleClass('rules-hidden');
+    });
+}
+
 //  GAME INITIALIZE METHOD
 yahtzeeApp.init = function () {
     yahtzeeApp.clickRoll();
@@ -338,6 +344,7 @@ yahtzeeApp.init = function () {
     yahtzeeApp.clickBottomScore();
     yahtzeeApp.clickDice();
     yahtzeeApp.reset();
+    yahtzeeApp.showRules();
 }
 
 //  DOCUMENT READY - INITIALIZE THE GAME

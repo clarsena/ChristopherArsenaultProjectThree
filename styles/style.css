@@ -271,6 +271,12 @@ score-sheet h2, score-sheet h3 {
   left: 0;
   margin-left: 10px; }
 
+.scoring-rules-bottom li {
+  margin-top: 10px; }
+
+.scoring-rules-name {
+  text-decoration: underline; }
+
 .logo {
   width: 25%;
   margin: 15px auto;
@@ -353,6 +359,13 @@ div.section-header {
     color: #e2e2e2; }
   .roll-hidden {
     display: none; }
+  .roll h2 {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    overflow-wrap: break-word; }
 
 div.dice {
   grid-row: -3;
